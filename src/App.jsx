@@ -5,14 +5,13 @@ import "./styles/components/app.sass";
 
 function App() {
   return (
-    <>
-      <div>
-        <Header />
-        <h1>Dashboard</h1>
-        <Sidebar />
+    <div className="app">
+      <Header />
+      <div className="content">
+        <Sidebar className="sidebar" />
         <MainContent />
       </div>
-    </>
+    </div>
   );
 }
 

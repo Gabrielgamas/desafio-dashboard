@@ -1,5 +1,7 @@
+import "../styles/components/maincontent.sass";
+
 const MainContent = () => {
-  return <div>MaindContent</div>;
+  return <div className="maincontent">MaindContent</div>;
 };
 
 export default MainContent;
