@@ -11,6 +11,7 @@ import {
   FormGroup,
   Typography,
   Box,
+  Button,
 } from "@mui/material";
 import CardContinent from "./CardContinent";
 
@@ -42,6 +43,40 @@ const DashboardContent = () => {
 
   const nationalities = ["Europa", "Ásia", "América"];
 
+  const [profiles, setProfiles] = useState([]);
+  const [profileName, setProfileName] = useState("");
+  const [error, setError] = useState("");
+
+  const saveProfile = () => {
+    if (profileName.trim() === "") {
+      setError("O nome do perfil não pode estar vazio.");
+      return;
+    }
+
+    if (profiles.length >= 5) {
+      setError("Você pode salvar no máximo 5 perfis.");
+      return;
+    }
+
+    const newProfile = {
+      name: profileName,
+      continents: selectedContinents,
+      sex: selectedSex,
+    };
+
+    setProfiles((prevProfiles) => [...prevProfiles, newProfile]);
+    setProfileName(""); // Limpa o campo de entrada após salvar
+    setError(""); // Limpa a mensagem de erro após salvar
+  };
+
+  const loadProfile = (name) => {
+    const profile = profiles.find((p) => p.name === name);
+    if (profile) {
+      setSelectedContinents(profile.continents);
+      setSelectedSex(profile.sex);
+    }
+  };
+
   return (
     <div className="dashboard-content">
       <Typography variant="h3" sx={{ color: "#ffffff", fontWeight: "bold" }}>
@@ -56,6 +91,73 @@ const DashboardContent = () => {
           />
         ))}
       </div>
+      <Box className="profile-manager" display="flex" flexDirection="column">
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            paddingBottom: "20px",
+          }}
+        >
+          <Typography variant="h6" sx={{ color: "#ffffff" }}>
+            Perfis Salvos
+          </Typography>
+          <Box display="flex" flexDirection="row" flexWrap="wrap">
+            {profiles.length > 0 ? (
+              profiles.map((profile) => (
+                <Button
+                  key={profile.name}
+                  onClick={() => loadProfile(profile.name)}
+                  sx={{ margin: 1, background: "#3a5077", color: "white" }}
+                >
+                  {profile.name}
+                </Button>
+              ))
+            ) : (
+              <Typography variant="body1" sx={{ color: "#ffffff" }}>
+                Nenhum perfil salvo.
+              </Typography>
+            )}
+          </Box>
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          paddingBottom="20px"
+        >
+          <Box display="flex" className="input-profile-container">
+            <Box className="input-profile-content">
+              <input
+                id="profile-name"
+                type="text"
+                value={profileName}
+                placeholder="Nome do Perfil"
+                onChange={(e) => setProfileName(e.target.value)}
+                className="profile-name"
+              />
+              <Button
+                className="profile-save-buttom"
+                onClick={saveProfile}
+                sx={{
+                  margin: 1,
+                  background: "#3aa08c",
+                  color: "white",
+                  height: "30px",
+                }}
+              >
+                Salvar Perfil
+              </Button>
+            </Box>
+            {error && (
+              <Typography variant="body2" sx={{ color: "red", marginTop: 2 }}>
+                {error}
+              </Typography>
+            )}
+          </Box>
+        </Box>
+      </Box>
       <Box className="checkbox-container">
         <div className="checkbox-content">
           <Typography variant="h6" sx={{ color: "#ffffff" }}>

@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import "../styles/components/cardcontinent.sass";
 
 const imageMap = {
-  Europa: "/image/europe.png", // Certifique-se de que o caminho está correto
+  Europa: "/image/europe.png",
   Ásia: "/image/asia.png",
   América: "/image/americas.png",
 };

@@ -86,7 +86,7 @@ const WageChart = ({ attendees }) => {
 
   return (
     <div className="grafic-wage-container">
-      <canvas ref={chartRef} />;
+      <canvas ref={chartRef} />
     </div>
   );
 };

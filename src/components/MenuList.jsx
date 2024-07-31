@@ -6,7 +6,6 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { useEffect, useRef, useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import { deepPurple } from "@mui/material/colors";
 
 const MenuListComposition = () => {
   const [open, setOpen] = useState(false);
