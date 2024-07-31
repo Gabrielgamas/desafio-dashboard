@@ -52,7 +52,7 @@ const MenuListComposition = () => {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
-        sx={{ bgcolor: deepPurple[500] }}
+        sx={{ bgcolor: "#3aa08c" }}
       >
         G
       </Avatar>
