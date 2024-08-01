@@ -1,6 +1,6 @@
 describe("DashboardContent Tests", () => {
   beforeEach(() => {
-    cy.visit("/"); // Visita a página que contém o componente DashboardContent
+    cy.visit("/");
   });
 
   it("Displays error message when profile name is empty", () => {
@@ -27,17 +27,14 @@ describe("DashboardContent Tests", () => {
   });
 
   it("Loads profile and updates checkboxes states", () => {
-    // Save a profile with specific checkbox states
     cy.get("#profile-name").type("Profile Test");
     cy.get('label:contains("Europa") input').check();
     cy.get('label:contains("Homem") input').check();
     cy.get(".profile-save-buttom").click();
 
-    // Change checkbox states to verify they are reset on profile load
     cy.get('label:contains("Europa") input').uncheck();
     cy.get('label:contains("Homem") input').uncheck();
 
-    // Load the saved profile and check if states are updated
     cy.contains("Profile Test").click();
     cy.get('label:contains("Europa") input').should("be.checked");
     cy.get('label:contains("Homem") input').should("be.checked");
@@ -63,26 +60,24 @@ describe("DashboardContent Tests", () => {
   });
 
   it("Filters data in charts based on checkbox states", () => {
-    // Verifica a existência do gráfico (canvas) antes das alterações
     cy.get(".chart").should("exist");
 
-    // Interage com os checkboxes e verifica a presença do gráfico após alterações
     cy.get('label:contains("Europa") input').uncheck();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
 
     cy.get('label:contains("Europa") input').check();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
 
     cy.get('label:contains("América") input').uncheck();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
 
     cy.get('label:contains("América") input').check();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
 
     cy.get('label:contains("Ásia") input').uncheck();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
 
     cy.get('label:contains("Ásia") input').check();
-    cy.get(".chart").should("exist"); // Verifica se o gráfico ainda existe
+    cy.get(".chart").should("exist");
   });
 });
