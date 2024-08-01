@@ -65,8 +65,8 @@ const DashboardContent = () => {
     };
 
     setProfiles((prevProfiles) => [...prevProfiles, newProfile]);
-    setProfileName(""); // Limpa o campo de entrada após salvar
-    setError(""); // Limpa a mensagem de erro após salvar
+    setProfileName("");
+    setError("");
   };
 
   const loadProfile = (name) => {

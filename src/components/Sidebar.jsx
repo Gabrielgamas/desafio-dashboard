@@ -56,6 +56,7 @@ const Sidebar = () => {
       </div>
       <div className="sidebar-refresh">
         <Button
+          className="sidebar-refresh"
           variant="contained"
           color="primary"
           startIcon={<RefreshIcon />}

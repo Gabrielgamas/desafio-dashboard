@@ -9,12 +9,11 @@ const WageChart = ({ attendees }) => {
 
   useEffect(() => {
     if (chartInstance.current) {
-      chartInstance.current.destroy(); // Destrua a instância antiga do gráfico antes de criar uma nova
+      chartInstance.current.destroy();
     }
 
-    // Definindo os intervalos de salários
     const wageRanges = [1000, 6000, 11000, 16000, 21000, 26000, 31000];
-    // Contando o número de pessoas em cada intervalo
+
     const wageCounts = wageRanges.map((_, index) => {
       const min = wageRanges[index];
       const max = wageRanges[index + 1] || Infinity;
@@ -23,7 +22,6 @@ const WageChart = ({ attendees }) => {
       ).length;
     });
 
-    // Criando o gráfico de linha com Chart.js
     chartInstance.current = new Chart(chartRef.current, {
       type: "line",
       data: {
@@ -52,10 +50,10 @@ const WageChart = ({ attendees }) => {
               color: "#ffffff",
             },
             ticks: {
-              color: "#ffffff", // Cor das legendas do eixo X
+              color: "#ffffff",
             },
             grid: {
-              color: "#888888", // Cor das linhas de referência do eixo X
+              color: "#888888",
             },
           },
           y: {
@@ -65,10 +63,10 @@ const WageChart = ({ attendees }) => {
               color: "#ffffff",
             },
             ticks: {
-              color: "#ffffff", // Cor das legendas do eixo X
+              color: "#ffffff",
             },
             grid: {
-              color: "#888888", // Cor das linhas de referência do eixo X
+              color: "#888888",
             },
             beginAtZero: true,
           },
@@ -76,7 +74,7 @@ const WageChart = ({ attendees }) => {
         plugins: {
           legend: {
             labels: {
-              color: "#ffffff", // Cor das legendas na parte superior do gráfico
+              color: "#ffffff",
             },
           },
         },

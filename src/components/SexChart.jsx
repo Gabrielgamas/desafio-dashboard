@@ -12,7 +12,6 @@ import {
 import { attendees } from "../data/attendees";
 import "../styles/components/sexcharts.sass";
 
-// Registro dos componentes do Chart.js
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,27 +22,24 @@ ChartJS.register(
 );
 
 const SexChart = ({ selectedSex, selectedContinents }) => {
-  // Filtra os dados baseados nos sexos e continentes selecionados
   const filteredAttendees = attendees.filter(
     (attendee) =>
       selectedSex[attendee.sex] && selectedContinents[attendee.nationality]
   );
 
-  // Conta a quantidade de homens e mulheres
   const sexCounts = filteredAttendees.reduce((counts, attendee) => {
     const sexLabel = attendee.sex === "male" ? "Homem" : "Mulher";
     counts[sexLabel] = (counts[sexLabel] || 0) + 1;
     return counts;
   }, {});
 
-  // Dados do gráfico
   const data = {
-    labels: Object.keys(sexCounts), // ["Homem", "Mulher"]
+    labels: Object.keys(sexCounts),
     datasets: [
       {
         label: "Quantidade",
-        data: Object.values(sexCounts), // [quantidade de homens, quantidade de mulheres]
-        backgroundColor: ["#FF6384", "#36A2EB"], // Cores para as barras
+        data: Object.values(sexCounts),
+        backgroundColor: ["#FF6384", "#36A2EB"],
       },
     ],
   };
@@ -51,12 +47,12 @@ const SexChart = ({ selectedSex, selectedContinents }) => {
   // Opções do gráfico
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // Permite que o gráfico use o tamanho do contêiner
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
         labels: {
-          color: "#ffffff", // Cor das legendas na parte superior do gráfico
+          color: "#ffffff",
         },
       },
       tooltip: {
@@ -71,13 +67,13 @@ const SexChart = ({ selectedSex, selectedContinents }) => {
         title: {
           display: true,
           text: "Sexo",
-          color: "#ffffff", // Cor do título do eixo X
+          color: "#ffffff",
         },
         ticks: {
-          color: "#ffffff", // Cor das legendas do eixo X
+          color: "#ffffff",
         },
         grid: {
-          color: "#888888", // Cor das linhas de referência do eixo X
+          color: "#888888",
         },
       },
       y: {
@@ -85,13 +81,13 @@ const SexChart = ({ selectedSex, selectedContinents }) => {
         title: {
           display: true,
           text: "Quantidade",
-          color: "#ffffff", // Cor do título do eixo Y
+          color: "#ffffff",
         },
         ticks: {
-          color: "#ffffff", // Cor das legendas do eixo Y
+          color: "#ffffff",
         },
         grid: {
-          color: "#888888", // Cor das linhas de referência do eixo Y
+          color: "#888888",
         },
       },
     },

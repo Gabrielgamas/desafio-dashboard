@@ -12,16 +12,16 @@ const AnalyticsContent = () => {
   attendees.shift();
 
   return (
-    <div className="main-container">
-      <div className="main-content">
+    <div className="analytics-container">
+      <div className="analytics-content">
         <TableContainer
           component={Paper}
           sx={{
             maxWidth: 820,
             background: "linear-gradient(135deg, #3a5077, #3aa08c)",
-            borderRadius: "8px", // Adiciona borda arredondada ao container
-            padding: "20px", // Adiciona espaçamento interno
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Adiciona sombra
+            borderRadius: "8px",
+            padding: "20px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
           }}
         >
           <Table

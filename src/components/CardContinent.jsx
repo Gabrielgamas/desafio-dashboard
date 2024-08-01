@@ -10,12 +10,10 @@ const imageMap = {
 };
 
 const CardContinent = ({ nationality, attendees }) => {
-  // Filtra os participantes pela nacionalidade
   const filteredAttendees = attendees.filter(
     (attendee) => attendee.nationality === nationality
   );
 
-  // Calcula a média dos salários
   const totalWage = filteredAttendees.reduce(
     (total, attendee) => total + attendee.wage,
     0

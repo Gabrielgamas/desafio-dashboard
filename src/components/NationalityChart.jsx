@@ -42,7 +42,7 @@ const NationalityChart = ({ selectedContinents }) => {
           legend: {
             position: "top",
             labels: {
-              color: "#ffffff", // Cor das labels da legenda
+              color: "#ffffff",
             },
           },
           tooltip: {

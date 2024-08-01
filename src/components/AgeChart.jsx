@@ -13,15 +13,13 @@ const AgeChart = () => {
       chartInstance.current.destroy();
     }
 
-    // Definindo os intervalos de idades
     const ageRanges = [18, 28, 38, 48, 58, 68, 78];
-    // Contando o número de pessoas em cada intervalo de idade
+
     const ageCounts = ageRanges.map((start, index) => {
-      const end = ageRanges[index + 1] || 100; // Assume 100 como idade máxima para o último intervalo
+      const end = ageRanges[index + 1] || 100;
       return attendees.filter(({ age }) => age >= start && age < end).length;
     });
 
-    // Criando o gráfico de linha com Chart.js
     chartInstance.current = new Chart(chartRef.current, {
       type: "line",
       data: {
@@ -50,10 +48,10 @@ const AgeChart = () => {
               color: "#ffffff",
             },
             ticks: {
-              color: "#ffffff", // Cor das legendas do eixo X
+              color: "#ffffff",
             },
             grid: {
-              color: "#888888", // Cor das linhas de referência do eixo X
+              color: "#888888",
             },
           },
           y: {
@@ -63,10 +61,10 @@ const AgeChart = () => {
               color: "#ffffff",
             },
             ticks: {
-              color: "#ffffff", // Cor das legendas do eixo X
+              color: "#ffffff",
             },
             grid: {
-              color: "#888888", // Cor das linhas de referência do eixo X
+              color: "#888888",
             },
             beginAtZero: true,
           },
@@ -74,7 +72,7 @@ const AgeChart = () => {
         plugins: {
           legend: {
             labels: {
-              color: "#ffffff", // Cor das legendas na parte superior do gráfico
+              color: "#ffffff",
             },
           },
         },
